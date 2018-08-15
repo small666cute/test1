@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
+//BlockingQueue,put和take
 public class StockExchange {
     public static void main(String[] args) {
         System.out.println("输入 ENTER 结束%n%n");
@@ -49,6 +50,7 @@ class Seller implements Runnable {
             try {
                 orderQueue.put(quantity);
                 System.out.println("sell order by" + Thread.currentThread().getName() + ":" + quantity);
+                Thread.sleep(5000);
             } catch (InterruptedException iex) {
                 shutdownRequest = true;
             }
@@ -59,15 +61,18 @@ class Seller implements Runnable {
 class Buyer implements Runnable {
     private BlockingQueue orderQueue;
     private boolean shutdownRequest = false;
-    public Buyer(BlockingQueue orderQueue){
-        this.orderQueue=orderQueue;
+
+    public Buyer(BlockingQueue orderQueue) {
+        this.orderQueue = orderQueue;
     }
-    public void run(){
-        while (shutdownRequest ==false){
+
+    public void run() {
+        while (shutdownRequest == false) {
             try {
-                Integer quantity = (Integer)orderQueue.take();
-                System.out.println("buye order by "+Thread.currentThread().getName()+":"+quantity);
-            }catch (InterruptedException iex){
+                Integer quantity = (Integer) orderQueue.take();
+                System.out.println("buye order by " + Thread.currentThread().getName() + ":" + quantity);
+                Thread.sleep(5000);
+            } catch (InterruptedException iex) {
                 shutdownRequest = true;
             }
         }
