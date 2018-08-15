@@ -52,11 +52,18 @@ public class StocksOrderProcessor {
         new Thread(new EvilThread(ordersToProcess)).start();
         System.out.println("cancelling a few orders at random");
         try {
-            //为了有足够时间结束所有待处理的订单（？），让处理器等待30秒
-            //不然主线程结束了，还有很多订单（线程）没有在模拟器里面执行
-            //不是特别懂
+            //为了有足够时间结束所有待处理的订单，让处理器等待30秒
+            //不然主线程结束了，还有很多订单（线程）没有在模拟器里面执行,这样count出的数量就不对了
+            //如果没有加这个的话，结果会是这样，主线程已经早早的开始计数，可是子线程还在运行，
+            /*submitting 10000 trades
+            cancelling a few orders at random
+            checking status before shutdown
+            0 trades cancelled
+            cancel order succeeded: 263
+            cancel order succeeded: 3594*/
+            //不是特别懂（明白了）
             //这个awaitTermination本来是一个检查线程池是否terminated，然后如果在指定时间内检测到线程池terminated的话（因为是在多线程的环境下，所有要考虑到一个方法的前后语句，可能由不同的线程执行，也可能同时在执行一个语句，有可能一个线程的循环条件是另一个线程来结束的），就返回true，不然一直检测，直到时间结束，就会返回false
-            //这里这条语句的作用和sleep 30秒相同，返回的结果也始终都是false,因为没有别的线程来teminate这个线程池
+            //这里这条语句的作用和sleep 30秒相同，返回的结果也始终都是false,因为没有别的线程来terminate这个线程池
             boolean flag=executor.awaitTermination(30, TimeUnit.SECONDS);
             System.out.println(flag);
         } catch (InterruptedException ex) {
