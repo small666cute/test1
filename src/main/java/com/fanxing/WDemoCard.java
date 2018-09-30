@@ -10,7 +10,7 @@ public class WDemoCard {
         longStack.push(10L);
         System.out.println("creating 'number' stack:");
         NumberStack<Number> numberStack = new NumberStack<>();//传入Number类型
-        numberStack.push(10);
+        numberStack.push(1.0);
         System.out.println("\ndumping 'long' stack");
         dumpStack(longStack);
         System.out.println("\ndumping 'number'stack");

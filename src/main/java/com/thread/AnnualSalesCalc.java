@@ -70,7 +70,11 @@ public class AnnualSalesCalc {
         int sum = 0;
         for (Future<Integer> future : set) {
             //future对象的get方法，用来获取计算的结果，结果很可能是完全无序的（因为这个set是无序的）（这个问题和18章的哪个问题类似了？）
-            sum += future.get();
+            try{
+            sum += future.get();//ei这儿好奇怪，为什么catch也行，不catch也行？
+            }catch (InterruptedException ie){
+                ie.printStackTrace();
+            }
         }
         System.out.printf("%nthe annual turnover (bags): %s%n%n", sum);
         //关闭执行者服务，释放分配的资源

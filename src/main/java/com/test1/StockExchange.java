@@ -70,7 +70,7 @@ class Buyer implements Runnable {
         while (shutdownRequest == false) {
             try {
                 Integer quantity = (Integer) orderQueue.take();
-                System.out.println("buye order by " + Thread.currentThread().getName() + ":" + quantity);
+                System.out.println("buy order by " + Thread.currentThread().getName() + ":" + quantity);
                 Thread.sleep(5000);
             } catch (InterruptedException iex) {
                 shutdownRequest = true;
