@@ -1,3 +1,4 @@
+/*
 package com.methodReference;
 
 public class GenericMethodRefDemo {
@@ -15,3 +16,4 @@ public class GenericMethodRefDemo {
         System.out.println("strs contains " + count + " twos");
     }
 }
+*/

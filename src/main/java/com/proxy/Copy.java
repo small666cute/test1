@@ -1,3 +1,4 @@
+/*
 import com.zqz.jdkproxy.ITaskService;
 
 import java.lang.reflect.InvocationHandler;
@@ -79,4 +80,4 @@ public final class TaskService$proxy extends Proxy
 
 ---------------------
 
-        本文来自 朱清震 的CSDN 博客 ，全文地址请点击：https://blog.csdn.net/zqz_zqz/article/details/78869000?utm_source=copy
+        本文来自 朱清震 的CSDN 博客 ，全文地址请点击：https://blog.csdn.net/zqz_zqz/article/details/78869000?utm_source=copy*/
